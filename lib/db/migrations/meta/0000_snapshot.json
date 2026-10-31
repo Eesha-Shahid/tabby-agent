@@ -1,11 +1,11 @@
 {
-  "id": "53b1df94-04ac-4f9a-ab76-44ec1cba4abb",
+  "id": "6db3e657-da05-43dd-b9f8-bdbfaa7a7e19",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.users": {
-      "name": "users",
+    "public.workflows": {
+      "name": "workflows",
       "schema": "",
       "columns": {
         "id": {
@@ -15,14 +15,8 @@
           "notNull": true,
           "default": "gen_random_uuid()"
         },
-        "clerk_id": {
-          "name": "clerk_id",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "email": {
-          "name": "email",
+        "org_id": {
+          "name": "org_id",
           "type": "text",
           "primaryKey": false,
           "notNull": true
@@ -31,18 +25,24 @@
           "name": "name",
           "type": "text",
           "primaryKey": false,
+          "notNull": true
+        },
+        "graph": {
+          "name": "graph",
+          "type": "jsonb",
+          "primaryKey": false,
           "notNull": false
         },
         "created_at": {
           "name": "created_at",
-          "type": "timestamp with time zone",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
           "default": "now()"
         },
         "updated_at": {
           "name": "updated_at",
-          "type": "timestamp with time zone",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
           "default": "now()"
@@ -51,15 +51,7 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {
-        "users_clerk_id_unique": {
-          "name": "users_clerk_id_unique",
-          "nullsNotDistinct": false,
-          "columns": [
-            "clerk_id"
-          ]
-        }
-      },
+      "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false
